@@ -1,0 +1,35 @@
+This file indicates the content of the wp site.
+
+The helldorado.fr website is made by Jigisha team, from iFlair (India) - Sept. 2016
+
+The website is based on the WordPress CMS and uses some pluggins.
+The plugins used for the site are listed bellow : 
+
+Other hand, Alaster (MOA) will use and implements a Continuous Integration platform on Digital at : re7.helldorado.fr
+
+-> based on the project from : https://github.com/chstudio/wordpress-project
+-> based on the wordpress git workflow at : https://marcjenkins.co.uk/a-wordpress-git-workflow/
+
+This platform is using these tools : 
+
+- Github repository of the sources at : https://github.com/hdGuild/WP-helldorado.git
+- WP-Cli (install user guide at) : https://www.digitalocean.com/community/tutorials/how-to-use-wp-cli-to-manage-your-wordpress-site-from-the-command-line
+
+=== WP version ===
+Wordpress 4.6.1
+
+=== DB Connection Details ===
+wp core config --dbname=dev1web_helldorado dbuser=root --dbpass=password --dbhost=127.0.0.1
+
+=== plugins ===
++---------------------+----------+--------+---------+
+| name                | status   | update | version |
++---------------------+----------+--------+---------+
+| akismet             | inactive | none   | 3.2     |
+| custom-field-suite  | active   | none   | 2.5.8   |
+| custom-post-type-ui | active   | none   | 1.5.1   |
+| encyclopedia-pro    | active   | none   | 1.5.20  |
+| hello               | inactive | none   | 1.6     |
+| wd-twitter-feed     | active   | none   | 2.1.9   |
++---------------------+----------+--------+---------+
+
