@@ -5,6 +5,8 @@
 # Ignore everything in the root except the "wp-content" directory... and Database directory, where the structure is saved
 /* 
 !.gitignore 
+!build.xml
+!build/
 !wp-content/ 
 |Database/
 !hd-website.txt

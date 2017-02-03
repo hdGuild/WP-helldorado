@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `dev1web_hellodorado`
+-- Database: `dev1web_helldorado`
 --
 
 -- --------------------------------------------------------
