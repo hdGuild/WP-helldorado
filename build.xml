@@ -93,10 +93,6 @@
     <modified />
    </fileset>
 
-   <fileset dir="${basedir}/tests">
-    <include name="**/*.php" />
-    <modified />
-   </fileset>
   </apply>
 
   <property name="lint.done" value="true"/>
@@ -108,7 +104,6 @@
   <exec executable="${phploc}" taskname="phploc">
    <arg value="--count-tests" />
    <arg path="${basedir}/wp-content" />
-   <arg path="${basedir}/tests" />
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -125,7 +120,6 @@
    <arg value="--log-xml" />
    <arg path="${basedir}/build/logs/phploc.xml" />
    <arg path="${basedir}/wp-content" />
-   <arg path="${basedir}/tests" />
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -180,7 +174,6 @@
    <arg value="--extensions=php" />
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/wp-content" />
-   <arg path="${basedir}/tests" />
   </exec>
 
   <property name="phpcs.done" value="true"/>
@@ -197,7 +190,6 @@
    <arg value="--extensions=php" />
    <arg value="--ignore=autoload.php" />
    <arg path="${basedir}/wp-content" />
-   <arg path="${basedir}/tests" />
   </exec>
 
   <property name="phpcs.done" value="true"/>
