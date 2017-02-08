@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="wp-helldorado" default="ci">
+ <!-- This section is for job wp-helldorado -->
+ <target name="qa" description="Trigger analysis tools">
+ </target>
+ <target name="ci"
+         description="Continuous integration target for jenkins' wp-helldorado job"
+         depends="clean, prepare, qa"/> 
+</project>
+
