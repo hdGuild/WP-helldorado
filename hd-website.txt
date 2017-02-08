@@ -15,6 +15,9 @@ This platform is using these tools :
 - Github repository of the sources at : https://github.com/hdGuild/WP-helldorado.git
 - WP-Cli (install user guide at) : https://www.digitalocean.com/community/tutorials/how-to-use-wp-cli-to-manage-your-wordpress-site-from-the-command-line
 - Build.xml for autonomous PHP testing on Jenjins
+- PHPUnit for PHP TDD 
+--> Tutorial can be found at https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit/
+
 
 === WP version ===
 Wordpress 4.6.1
