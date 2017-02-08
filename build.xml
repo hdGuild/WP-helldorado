@@ -265,7 +265,7 @@
  <target name="qa" description="Trigger analysis tools">
  </target>
  <target name="ci"
-         description="Tâche d'intégration continue du job wp-helldorado"
-         depends="clean, qa"/> 
+         description="Continuous integration target for jenkins' wp-helldorado job"
+         depends="clean, prepare, qa"/> 
 </project>
 
