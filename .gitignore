@@ -2,7 +2,11 @@
 
 # Thanks to : https://gist.github.com/jdbartlett/444295 
  
-# Ignore everything in the root except the "wp-content" directory... and Database directory, where the structure is saved
+# Ignore everything in the root except
+# wp-content directory where is our theme
+# Database directory, where the structure is saved 
+# build directory, where is the structure of automation for tests
+# hd-website.txt that explain the plugins installed in  our website
 /* 
 !.gitignore 
 !build.xml
