@@ -2,6 +2,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.2/phpunit.xsd"
          colors="true"
+         strict_xml="true"
          backupGlobals="false"
          backupStaticAttributes="false"
          beStrictAboutCoversAnnotation="true"
