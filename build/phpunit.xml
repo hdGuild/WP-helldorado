@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.2/phpunit.xsd"
-         bootstrap="../wp-config/autoload.php"
+         colors="true"
          backupGlobals="false"
          backupStaticAttributes="false"
          beStrictAboutCoversAnnotation="true"
@@ -10,7 +10,7 @@
          beStrictAboutTodoAnnotatedTests="true"
          forceCoversAnnotation="true"
          verbose="true">
-    <testsuite name="WP-helldorado">
+    <testsuite name="helldorado theme test suite">
         <directory suffix="Test.php">../tests</directory>
     </testsuite>
 
@@ -25,7 +25,7 @@
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">../src</directory>
+            <directory suffix=".php">../</directory>
             <exclude>
                 <file>../wp-load.php</file>
             </exclude>
