@@ -12,7 +12,7 @@
 !.gitignore 
 !build.xml
 !build/
-|test/
+|tests/
 !wp-content/ 
 |Database/
 !hd-website.txt
