@@ -261,5 +261,11 @@
    </condition>
   </fail>
  </target>
+ <!-- This section is for job wp-helldorado -->
+ <target name="qa" description="Trigger analysis tools">
+ </target>
+ <target name="ci"
+         description="Tâche d'intégration continue du job wp-helldorado"
+         depends="clean, qa"/> 
 </project>
 
