@@ -7,10 +7,12 @@
 # Database directory, where the structure is saved 
 # build directory, where is the structure of automation for tests
 # hd-website.txt that explain the plugins installed in  our website
+# tests directory to include tests on the helldorado theme
 /* 
 !.gitignore 
 !build.xml
 !build/
+|test/
 !wp-content/ 
 |Database/
 !hd-website.txt
