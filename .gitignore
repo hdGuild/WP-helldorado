@@ -10,7 +10,8 @@
 # tests directory to include tests on the helldorado theme
 /* 
 !.gitignore 
-!build.xml
+!build.ant.xml
+!build.phing.xml
 !build/
 |tests/
 !wp-content/ 
