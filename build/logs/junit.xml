@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite name="helldorado theme test suite" tests="1" assertions="1" failures="0" errors="0" time="0.001903">
-    <testsuite name="hd_website\tests\StupidTest" file="/home/alaster/WP-helldorado/tests/StupidTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.001903">
-      <testcase name="testTrusIsTrue" class="hd_website\tests\StupidTest" file="/home/alaster/WP-helldorado/tests/StupidTest.php" line="6" assertions="1" time="0.001903"/>
+    <testsuite name="hd_website\tests\StupidTest" file="../../tests/StupidTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.001903">
+  <testcase name="testTrusIsTrue" class="hd_website\tests\StupidTest" file="../../tests/StupidTest.php" line="6" assertions="1" time="0.001903"/>
     </testsuite>
   </testsuite>
 </testsuites>
