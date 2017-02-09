@@ -3,15 +3,15 @@
 # Thanks to : https://gist.github.com/jdbartlett/444295 
  
 # Ignore every php in the root as they are Wordpress specific configuration or security intend
-/*.php
+*.php
 # Ignore license.txt and readme.html  as they are Wordpress specific
-/license.txt
-/readme.html
+license.txt
+readme.html
 
 # Ignore wp-admin as it is wordpress content
-/wp-admin/
+wp-admin/
 # Ignore wp-includes as it is Wordpress content
-/wp-includes/
+wp-includes/
 
 # Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories. 
 wp-content/* 
