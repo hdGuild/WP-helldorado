@@ -1,0 +1,4 @@
+#!/bin/sh 
+ssh jenkins@re7.helldorado.fr <<EOF
+cd /var/www/html
+
