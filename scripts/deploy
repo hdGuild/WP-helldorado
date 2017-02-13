@@ -1,4 +1,6 @@
 #!/bin/sh 
-ssh jenkins@re7.helldorado.fr <<EOF
-cd /var/www/html
+# updating wordpress to minor version
+wp core update --minor --locale=fr --skip-themes=all >> wp_update.txt
+wp core update-db --minor --locale=fr --skip-themes=all >> wp_update.txt
+
 
