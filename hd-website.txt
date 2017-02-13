@@ -40,4 +40,4 @@ wp core config --dbname=dev1web_helldorado dbuser=root --dbpass=password --dbhos
 === updates ===
 2017/02/13 : remove wordpress source files from the repository
 2017/02/13 : add scripts files to manage rights on files  and deployment
-2017/02/13 : add sript to update wordpress and plugins
+2017/02/13 : add sripts to update wordpress and plugins

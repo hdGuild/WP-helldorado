@@ -38,7 +38,7 @@
 	 	  <?php $headImag = CFS()->get('header_image',$homeID); ?>
 	 	  	   <div class="header" style="background-image:url('<?php echo $headImag;?>')" >
 	 	  	   	    <div class="logo">
-	 	  	   	    	 <a href="<?php echo home_url(); ?>" title="Hell-TEST-Dorado"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/logo.png" alt=""></a>
+	 	  	   	    	 <a href="<?php echo home_url(); ?>" title="Hell-Dorado"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/logo.png" alt=""></a>
 	 	  	   	    </div>
 	 	  	   </div>
 	 	  	   <div class="navigation">
