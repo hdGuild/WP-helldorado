@@ -1,6 +1,7 @@
 #!/bin/sh 
 # updating wordpress to minor version
-wp core update --minor --locale=fr --skip-themes=all --pass=/var/www/html >> wp_update.txt
-wp core update-db --minor --locale=fr --skip-themes=all --pass=/var/www/html >> wp_update.txt
+pwd
+wp core update --minor --locale=fr --skip-themes=all --pass='/var/www/html' >> wp_update.txt
+wp core update-db --minor --locale=fr --skip-themes=all --pass='/var/www/html' >> wp_update.txt
 
 
