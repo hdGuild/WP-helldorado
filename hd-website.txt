@@ -20,7 +20,7 @@ This platform is using these tools :
 
 
 === WP version ===
-Wordpress 4.6.1
+Wordpress 4.7.1
 
 === DB Connection Details ===
 wp core config --dbname=dev1web_helldorado dbuser=root --dbpass=password --dbhost=127.0.0.1
