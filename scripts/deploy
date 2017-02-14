@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 # updating wordpress to minor version
 cd /var/www/html/
 wp core update --minor --locale=fr --skip-themes=all >> wp_update.txt
