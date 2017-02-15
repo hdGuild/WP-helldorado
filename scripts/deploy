@@ -2,7 +2,7 @@
 TODAY=$(date)
 HOST=$(hostname)
 # updating wordpress to minor version
-echo '<---------            $TODAY  at  $HOST          -------->'
+echo "<---------            $TODAY  at  $HOST          -------->"
 wp core check-update --path=/var/www/html/ --minor --skip-themes=all
 
 
