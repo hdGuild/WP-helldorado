@@ -1,5 +1,8 @@
 #!/bin/bash 
+TODAY=$(date)
+HOST=$(hostname)
 # updating wordpress to minor version
+echo '<---------            $TODAY  at  $HOST          -------->' >> wp_update.txt
 wp core check-update --path=/var/www/html/ --minor --skip-themes=all >> wp_update.txt
 
 
