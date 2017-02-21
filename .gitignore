@@ -4,10 +4,10 @@
  
 # ignore every temp files
 *.~
-# ignore git config file
-.gitconfig
+
 # Ignore every php in the root as they are Wordpress specific configuration or security intend
 *.php
+
 # Ignore license.txt and readme.html  as they are Wordpress specific
 license.txt
 readme.html
