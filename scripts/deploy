@@ -1,8 +1,18 @@
 #!/bin/bash 
 TODAY=$(date)
 HOST=$(hostname)
+
+
+echo "<-------------------------------------------------------->"
+echo "<-- today is : $TODAY  and host is :  $HOST           --->"
+echo "<-- script 'deploy' :                                  -->"
+echo "<--   + update wp to minor version if enabled          -->"
+echo "<--   + update wp options to re7 values                -->"
+echo "<--     - url - home - blogname - desc - email         -->"
+echo "<--     - stylesheet - template                        -->"
+echo "<-------------------------------------------------------->"
+
 # updating wordpress to minor version
-echo "<---------            $TODAY  at  $HOST          -------->"
 wp core check-update --path=/var/www/html/ --minor --skip-themes=all
 
 # load database update
@@ -18,3 +28,8 @@ wp option update blogdescription "Les lois éternelles de l'enfer"
 wp option update admin_email 'contact.laguilde@helldorado'
 wp option update template 'helldorado'
 wp option update stylesheet 'helldorado'
+
+# theme test plugin
+wget https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml
+mv -f theme-unit-test-data.xml ../tests/
+
