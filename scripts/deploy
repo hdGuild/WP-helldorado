@@ -1,27 +1,26 @@
 #!/bin/bash 
 TODAY=$(date)
 HOST=$(hostname)
-$WPPATH=$1
+WPPATH=/var/www/html
 
-echo "<-------------------------------------------------------->"
-echo "<-- today is : $TODAY  and host is :  $HOST            -->"
-echo "<-- path is : $WPPATH on host                          -->"
-echo "<-- script 'deploy' :                                  -->"
-echo "<--   + update wp options to re7 values :              -->"
-echo "<--     - url - home - blogname - desc - email         -->"
-echo "<--     - stylesheet - template                        -->"
-echo "<--   + Import Tests DATAS from wptest :               -->"
-echo "<--     - wget wptest.xml from GitHub                  -->"
-echo "<--     - install wordpress-importer (wp-cli)          -->"
-echo "<--     - active wordpress-importer (wp-cli)           -->"
-echo "<--     - import xml file through wordpress-importer   -->"
-echo "<--     - rm wptest.xml                                -->"
-echo "<-------------------------------------------------------->"
-echo "<-------------------------------------------------------->"
+echo "<--                                                       "
+echo "<-- now        $TODAY      host       $HOST               "
+echo "<-- path       $WPPATH                                    "
+echo "<-- script 'deploy' :                                     "
+echo "<--   + update wp options to re7 values :                 "
+echo "<--     - url - home - blogname - desc - email            "
+echo "<--     - stylesheet - template                           "
+echo "<--   + Import Tests DATAS from wptest :                  "
+echo "<--     - wget wptest.xml from GitHub                     "
+echo "<--     - install wordpress-importer (wp-cli)             "
+echo "<--     - active wordpress-importer (wp-cli)              "
+echo "<--     - import xml file through wordpress-importer      "
+echo "<--     - rm wptest.xml                                   "
+echo "<------------------------------------------------------   "
+echo "<------------------------------------------------------   "
 
 # move to wp directory 
 cd $WPPATH
-
 # no more updating wordpress to minor version
 # wp core check-update --path=/var/www/html/ --minor --skip-themes=all
 
@@ -44,8 +43,9 @@ wp option update $WPPATH admin_email 'contact.laguilde@helldorado'
 wp plugin install wordpress-importer --activate 
 
 ## import wptest.xml file to ensure last version
-wget https://github.com/poststatus/wptest/archive/master.zip ://raw.githubusercontent.com/poststatus/wptest/master/wptest.xml 
+wget https://raw.githubusercontent.com/poststatus/wptest/master/wptest.xml 
 
 ## import the file, then delete it
-wp import wptest.xml --authors=create
+wp import wptest.xml --authors=create >> wptest.log 
+echo 'cleanning wptest.xlm'
 rm wptest.xml
