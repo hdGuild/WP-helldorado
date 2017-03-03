@@ -1,7 +1,6 @@
 #! Groovy
 
 pipeline {
-    def repo-URL = 'https://github.com/hdGuild/WP-helldorado.gi://github.com/hdGuild/WP-helldorado.git'
     agent { docker 'php' }
     stages {
         stage('build') {
@@ -18,7 +17,7 @@ pipeline {
                         submoduleCfg: [], 
                         userRemoteConfigs: 
                             [[credentialsId: 'ba4599ad-20bd-4867-aa65-692a3d22cb4a', 
-                            url: "${repo-URL}"]]]
+                            url: 'https://github.com/hdGuild/WP-helldorado.gi://github.com/hdGuild/WP-helldorado.git']]]
                     )
 
         }
