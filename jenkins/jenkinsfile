@@ -1,22 +1,30 @@
-
+#! Groovy
+/* Pipeline for wp-helldorado website
+   This pipeline have the following first stages :
+   - check repository for sources
+   - build sources locally
+   - deploy sources on re7.helldorado.fr
+   */
+def repo-URL = 'https://github.com/hdGuild/WP-helldorado.gi://github.com/hdGuild/WP-helldorado.git'
 pipeline {
-    agent any 1
+    agent { docker 'php' }
     stages {
-        stage('Build') { 2
-            steps { 3
-                sh 'make' 4
-            }
-        }
-        stage('Test'){
+        stage('build') {
             steps {
-                sh 'make check'
-                junit 'reports/**/*.xml' 5
+                sh 'php --version'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'make publish'
-            }
+
+        stage('Check repo') {
+            checkout(  [$class: 'GitSCM', 
+                        branches: [[name: '*/pipeline-jenkins']], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        userRemoteConfigs: 
+                            [[credentialsId: 'ba4599ad-20bd-4867-aa65-692a3d22cb4a', 
+                            url: "${repo-URL}"]]]
+                    )
+
         }
-    }
 }
