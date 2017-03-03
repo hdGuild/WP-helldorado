@@ -1,6 +1,7 @@
 #! Groovy
-def repo-URL = 'https://github.com/hdGuild/WP-helldorado.gi://github.com/hdGuild/WP-helldorado.git'
+
 pipeline {
+    def repo-URL = 'https://github.com/hdGuild/WP-helldorado.gi://github.com/hdGuild/WP-helldorado.git'
     agent { docker 'php' }
     stages {
         stage('build') {
