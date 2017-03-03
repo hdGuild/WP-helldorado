@@ -1,10 +1,4 @@
 #! Groovy
-/* Pipeline for wp-helldorado website
-   This pipeline have the following first stages :
-   - check repository for sources
-   - build sources locally
-   - deploy sources on re7.helldorado.fr
-   */
 def repo-URL = 'https://github.com/hdGuild/WP-helldorado.gi://github.com/hdGuild/WP-helldorado.git'
 pipeline {
     agent { docker 'php' }
