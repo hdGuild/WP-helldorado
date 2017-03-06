@@ -27,16 +27,16 @@ cd $WPPATH
 # load database update
 
 # change 'hellodorado' to 'helldorado' on all tables before updating options
-wp search-replace $WPPATH --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
+wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
 
 # update wp options from database
-wp option update $WPPATH siteurl 'https://re7.helldorado.fr'
-wp option update $WPPATH home 'https://re7.helldorado.fr'
-wp option update $WPPATH blogname 'Hell Dorado'
-wp option update $WPPATH blogdescription "Les lois éternelles de l'enfer"
-wp option update $WPPATH admin_email 'contact.laguilde@helldorado'
-#wp option update $WPPATH template 'helldorado'
-#wp option update $WPPATH stylesheet 'helldorado'
+wp option update siteurl 'https://re7.helldorado.fr'
+wp option update home 'https://re7.helldorado.fr'
+wp option update blogname 'Hell Dorado'
+wp option update blogdescription "Les lois éternelles de l'enfer"
+wp option update admin_email 'contact.laguilde@helldorado'
+#wp option update template 'helldorado'
+#wp option update stylesheet 'helldorado'
 
 # wp test
 ## install and activate wordpress-importer
