@@ -1,8 +1,51 @@
 #!/bin/bash 
-#TODAY=$(date)
-#HOST=$(hostname)
-## updating wordpress to minor version
-#echo '<---------            $TODAY  at  $HOST          -------->'
-#wp core check-update --path=/var/www/html/ --minor --skip-themes=all
+TODAY=$(date)
+HOST=$(hostname)
+WPPATH=/var/www/html
 
+echo "<--                                                       "
+echo "<-- now        $TODAY      host       $HOST               "
+echo "<-- path       $WPPATH                                    "
+echo "<-- script 'deploy' :                                     "
+echo "<--   + update wp options to re7 values :                 "
+echo "<--     - url - home - blogname - desc - email            "
+echo "<--     - stylesheet - template                           "
+echo "<--   + Import Tests DATAS from wptest :                  "
+echo "<--     - wget wptest.xml from GitHub                     "
+echo "<--     - install wordpress-importer (wp-cli)             "
+echo "<--     - active wordpress-importer (wp-cli)              "
+echo "<--     - import xml file through wordpress-importer      "
+echo "<--     - rm wptest.xml                                   "
+echo "<------------------------------------------------------   "
+echo "<------------------------------------------------------   "
 
+# move to wp directory 
+cd $WPPATH
+# no more updating wordpress to minor version
+# wp core check-update --path=/var/www/html/ --minor --skip-themes=all
+
+# load database update
+
+# change 'hellodorado' to 'helldorado' on all tables before updating options
+wp search-replace $WPPATH --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
+
+# update wp options from database
+wp option update $WPPATH siteurl 'https://re7.helldorado.fr'
+wp option update $WPPATH home 'https://re7.helldorado.fr'
+wp option update $WPPATH blogname 'Hell Dorado'
+wp option update $WPPATH blogdescription "Les lois éternelles de l'enfer"
+wp option update $WPPATH admin_email 'contact.laguilde@helldorado'
+#wp option update $WPPATH template 'helldorado'
+#wp option update $WPPATH stylesheet 'helldorado'
+
+# wp test
+## install and activate wordpress-importer
+wp plugin install wordpress-importer --activate 
+
+## import wptest.xml file to ensure last version
+wget https://raw.githubusercontent.com/poststatus/wptest/master/wptest.xml 
+
+## import the file, then delete it
+wp import wptest.xml --authors=create >> wptest.log 
+echo 'cleanning wptest.xlm'
+rm wptest.xml

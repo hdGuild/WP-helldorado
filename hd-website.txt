@@ -17,10 +17,13 @@ This platform is using these tools :
 - Build.xml for autonomous PHP testing on Jenjins
 - PHPUnit for PHP TDD 
 --> Tutorial can be found at https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit/
+- wptest (http://wptest.io/) to have content for the developed wesite 
 
 
 === WP version ===
-Wordpress 4.7.1
+-- Wordpress 4.7.1
+Wordpress 4.7.2
+
 
 === DB Connection Details ===
 wp core config --dbname=dev1web_helldorado dbuser=root --dbpass=password --dbhost=127.0.0.1
@@ -41,3 +44,4 @@ wp core config --dbname=dev1web_helldorado dbuser=root --dbpass=password --dbhos
 2017/02/13 : remove wordpress source files from the repository
 2017/02/13 : add scripts files to manage rights on files  and deployment
 2017/02/13 : add sripts to update wordpress and plugins
+2017/03/01 : add the use of wptest to fulfill the site (see http://wptest.io/)
