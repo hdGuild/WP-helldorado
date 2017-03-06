@@ -1,8 +1,81 @@
 #!/bin/bash 
 TODAY=$(date)
 HOST=$(hostname)
-# updating wordpress to minor version
-echo '<---------            $TODAY  at  $HOST          -------->'
-wp core check-update --path=/var/www/html/ --minor --skip-themes=all
+WPPATH=/var/www/html
+
+case "$1" in
+    "--help")
+        HELP=$1
+        ;;
+    "--wptest-import")
+        WPTEST_IMPORT=$1
+        ;;
+    "")
+        HELP=""
+        WPTEST_IMPORT=""
+        ;;
+    *)
+        echo "Invalid flag provided. Allowed flags:\n --help\n --wptest-import"
+        ;;
+esac 
+
+# help menu
+if [ ! -z $HELP ] && [ $HELP == "--help" ];then
+    echo "script deploy : help deploying wp-helldorado wordpress through wp-cli."
+    echo "--help : shows this help."
+    echo "--wptest-import: download testing data from http://wptest.io/ after installing and activating wordpress-importer plugin"
+    exit
+fi
+
+echo "<--                                                       "
+echo "<-- now        $TODAY                                     "
+echo "<-- host       $HOST                                      "
+echo "<-- path       $WPPATH                                    "
+echo "<-- script  deploy  :                                     "
+echo "<--   + update wp options to re7 values :                 "
+echo "<--     - url - home - blogname - desc - email            "
+echo "<--     - stylesheet - template                           "
+if [ ! -z $WPTEST_IMPORT] && [ $WPTEST_IMPORT == "--wptest-import" ];then
+    echo "<--   + Import Tests DATAS from wptest :                  "
+    echo "<--     - wget wptest.xml from GitHub                     "
+    echo "<--     - install wordpress-importer (wp-cli)             "
+    echo "<--     - active wordpress-importer (wp-cli)              "
+    echo "<--     - import xml file through wordpress-importer      "
+    echo "<--     - rm wptest.xml                                   "
+fi    
+echo "<------------------------------------------------------   "
+echo "<------------------------------------------------------   "
+
+# move to wp directory 
+cd $WPPATH
+# no more updating wordpress to minor version
+# wp core check-update --path=/var/www/html/ --minor --skip-themes=all
+
+# load database update
+
+# change 'hellodorado' to 'helldorado' on all tables before updating options
+wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
+
+# update wp options from database
+wp option update siteurl 'https://re7.helldorado.fr'
+wp option update home 'https://re7.helldorado.fr'
+wp option update blogname 'Hell Dorado'
+wp option update blogdescription "Les lois éternelles de l'enfer"
+wp option update admin_email 'contact.laguilde@helldorado'
+#wp option update template 'helldorado'
+#wp option update stylesheet 'helldorado'
 
 
+# wp test installed only if asked for  
+if [ ! -z $WPTEST_IMPORT ] && [ $WPTEST_IMPORT == '--wptest-import' ];then
+    ## install and activate wordpress-importer
+    wp plugin install wordpress-importer --activate 
+
+    ## import wptest.xml file to ensure last version
+    wget https://raw.githubusercontent.com/poststatus/wptest/master/wptest.xml 
+
+    # import the file, then delete it
+    wp import wptest.xml --authors=create >> wptest.log 
+    # echo 'cleanning wptest.xlm'
+    rm wptest.xml
+fi

@@ -4,8 +4,10 @@
  
 # ignore every temp files
 *.~
+
 # Ignore every php in the root as they are Wordpress specific configuration or security intend
 *.php
+
 # Ignore license.txt and readme.html  as they are Wordpress specific
 license.txt
 readme.html
