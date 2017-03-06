@@ -38,14 +38,16 @@ wp option update admin_email 'contact.laguilde@helldorado'
 #wp option update template 'helldorado'
 #wp option update stylesheet 'helldorado'
 
-# wp test
-## install and activate wordpress-importer
-wp plugin install wordpress-importer --activate 
+# wp test installed only if "--test-install" is set
+if [$1=="--wp-test"];then
+    ## install and activate wordpress-importer
+    wp plugin install wordpress-importer --activate 
 
-## import wptest.xml file to ensure last version
-wget https://raw.githubusercontent.com/poststatus/wptest/master/wptest.xml 
+    ## import wptest.xml file to ensure last version
+    wget https://raw.githubusercontent.com/poststatus/wptest/master/wptest.xml 
 
-## import the file, then delete it
-wp import wptest.xml --authors=create >> wptest.log 
-echo 'cleanning wptest.xlm'
-rm wptest.xml
+    # import the file, then delete it
+    wp import wptest.xml --authors=create >> wptest.log 
+    # echo 'cleanning wptest.xlm'
+    rm wptest.xml
+fi
