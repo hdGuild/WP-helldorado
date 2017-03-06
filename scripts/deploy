@@ -38,11 +38,11 @@ wp option update admin_email 'contact.laguilde@helldorado'
 #wp option update template 'helldorado'
 #wp option update stylesheet 'helldorado'
 
-WPTEST_IMPORTED=$(wp db query "SELECT distinct  post_title  FROM hdd_posts WHERE post_title = 'canola2' ")
+WPTEST_IMPORTED=$(wp db query "SELECT distinct '1'  FROM hdd_posts WHERE post_title = 'canola2' ")
 echo $WPTEST_IMPORTED
 
-# wp test installed only if "--test-install" is set
-if [ $WPTEST_IMPORTED != 'canola2' ];then
+# wp test installed only if 
+if [ $WPTEST_IMPORTED != '1 1' ];then
     ## install and activate wordpress-importer
     wp plugin install wordpress-importer --activate 
 
