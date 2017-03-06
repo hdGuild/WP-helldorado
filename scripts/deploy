@@ -20,7 +20,7 @@ case "$1" in
 esac 
 
 # help menu
-if [ $HELP=="--help" ];then
+if [ ! -z $HELP ] && [ $HELP == "--help" ];then
     echo "script deploy : help deploying wp-helldorado wordpress through wp-cli."
     echo "--help : shows this help."
     echo "--wptest-import: download testing data from http://wptest.io/ after installing and activating wordpress-importer plugin"
@@ -35,7 +35,7 @@ echo "<-- script  deploy  :                                     "
 echo "<--   + update wp options to re7 values :                 "
 echo "<--     - url - home - blogname - desc - email            "
 echo "<--     - stylesheet - template                           "
-if [ $WPTEST_IMPORT=="--wptest-import" ] 
+if [ ! -z $WPTEST_IMPORT] && [ $WPTEST_IMPORT == "--wptest-import" ];then
     echo "<--   + Import Tests DATAS from wptest :                  "
     echo "<--     - wget wptest.xml from GitHub                     "
     echo "<--     - install wordpress-importer (wp-cli)             "
@@ -67,7 +67,7 @@ wp option update admin_email 'contact.laguilde@helldorado'
 
 
 # wp test installed only if asked for  
-if [ $WPTEST_IMPORT=='--wptest-import' ];then
+if [ ! -z $WPTEST_IMPORT ] && [ $WPTEST_IMPORT == '--wptest-import' ];then
     ## install and activate wordpress-importer
     wp plugin install wordpress-importer --activate 
 
