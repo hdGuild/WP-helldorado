@@ -1,6 +1,6 @@
 #!groovy
 
-node('pipeline-jenkins') {
+node('master') {
     checkout scm
     stage('Git') {
        // some block
