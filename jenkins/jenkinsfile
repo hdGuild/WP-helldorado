@@ -4,7 +4,7 @@ node('master') {
     // some block
     stage('checkout') {
        // some block
-        steps {
+        step {
             checkout(  [$class: 'GitSCM', 
                         branches: [[name: '*/pipeline-jenkins']], 
                         doGenerateSubmoduleConfigurations: false, 
