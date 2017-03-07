@@ -4,14 +4,15 @@ node('master') {
     // some block
     stage('checkout') {
        // some block
-       checkout(  [$class: 'GitSCM', 
-                   branches: [[name: '*/pipeline-jenkins']], 
-                   doGenerateSubmoduleConfigurations: false, 
-                   extensions: [], 
-                   submoduleCfg: [], 
-                   userRemoteConfigs: 
-                       [[url: 'https://github.com/hdGuild/WP-helldorado.git']]
-                   ]
-       )
+       #checkout(  [$class: 'GitSCM', 
+       #            branches: [[name: '*/pipeline-jenkins']], 
+       #            doGenerateSubmoduleConfigurations: false, 
+       #            extensions: [], 
+       #            submoduleCfg: [], 
+       #            userRemoteConfigs: 
+       #                [[url: 'https://github.com/hdGuild/WP-helldorado.git']]
+       #            ]
+       #)
+       git branch: 'pipeline-jenkins', url: 'https://github.com/hdGuild/WP-helldorado.git'
     }
 }
