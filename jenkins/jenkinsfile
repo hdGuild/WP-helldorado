@@ -1,15 +1,10 @@
-#! Groovy
+#!groovy
 
 pipeline {
-    agent any 
-    stages {
-        stage('build') {
-            steps {
-                sh 'php --version'
-            }
-        }
-
-        stage('Check repo') {
+    node('master') {
+        // some block
+        stage('checkout') {
+           // some block
             steps {
                 checkout(  [$class: 'GitSCM', 
                             branches: [[name: '*/pipeline-jenkins']], 
@@ -22,5 +17,5 @@ pipeline {
                         )
             }
         }
-    }
+   }
 }
