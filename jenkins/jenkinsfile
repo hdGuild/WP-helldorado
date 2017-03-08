@@ -1,11 +1,7 @@
-#!groovy
+#!/usr/bin/env groovy
 
-node('master') {
+node('master'){
     checkout scm
-    stage('Git') {
-       // some block
-       git branch: 'pipeline-jenkins', url: 'https://github.com/hdGuild/WP-helldorado.git'
-    }
     stage('Build'){
         echo 'Building...'
     }
