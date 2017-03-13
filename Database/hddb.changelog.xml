@@ -1,0 +1,492 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="alaster (generated)" id="1489398328931-1">
+        <createTable tableName="hdd_cfs_sessions">
+            <column defaultValue="" name="id" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data" type="TEXT"/>
+            <column name="expires" type="VARCHAR(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-2">
+        <createTable tableName="hdd_cfs_values">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="field_id" type="INT UNSIGNED"/>
+            <column name="meta_id" type="INT UNSIGNED"/>
+            <column name="post_id" type="INT UNSIGNED"/>
+            <column defaultValueNumeric="0" name="base_field_id" type="INT UNSIGNED"/>
+            <column name="hierarchy" type="TEXT"/>
+            <column defaultValueNumeric="0" name="depth" type="INT UNSIGNED"/>
+            <column defaultValueNumeric="0" name="weight" type="INT UNSIGNED"/>
+            <column defaultValueNumeric="0" name="sub_weight" type="INT UNSIGNED"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-3">
+        <createTable tableName="hdd_commentmeta">
+            <column autoIncrement="true" name="meta_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="comment_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meta_key" type="VARCHAR(255)"/>
+            <column name="meta_value" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-4">
+        <createTable tableName="hdd_comments">
+            <column autoIncrement="true" name="comment_ID" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="comment_post_ID" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_author" type="TINYTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="comment_author_email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="comment_author_url" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="comment_author_IP" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="comment_date" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="comment_date_gmt" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_content" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="comment_karma" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="1" name="comment_approved" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="comment_agent" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="comment_type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="comment_parent" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-5">
+        <createTable tableName="hdd_links">
+            <column autoIncrement="true" name="link_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="link_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="link_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="link_image" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="link_target" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="link_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="Y" name="link_visible" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="link_owner" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="link_rating" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="link_updated" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="link_rel" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link_notes" type="MEDIUMTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="link_rss" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-6">
+        <createTable tableName="hdd_options">
+            <column autoIncrement="true" name="option_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="option_name" type="VARCHAR(191)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="option_value" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="yes" name="autoload" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-7">
+        <createTable tableName="hdd_postmeta">
+            <column autoIncrement="true" name="meta_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="post_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meta_key" type="VARCHAR(255)"/>
+            <column name="meta_value" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-8">
+        <createTable tableName="hdd_posts">
+            <column autoIncrement="true" name="ID" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="post_author" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="post_date" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="post_date_gmt" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="post_content" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="post_title" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="post_excerpt" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="publish" name="post_status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="open" name="comment_status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="open" name="ping_status" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="post_password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="post_name" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_ping" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pinged" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="post_modified" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="post_modified_gmt" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="post_content_filtered" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="post_parent" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="guid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="menu_order" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="post" name="post_type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="post_mime_type" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="comment_count" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-9">
+        <createTable tableName="hdd_term_relationships">
+            <column defaultValueNumeric="0" name="object_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="term_taxonomy_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="term_order" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-10">
+        <createTable tableName="hdd_term_taxonomy">
+            <column autoIncrement="true" name="term_taxonomy_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="term_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="taxonomy" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="parent" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="count" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-11">
+        <createTable tableName="hdd_termmeta">
+            <column autoIncrement="true" name="meta_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="term_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meta_key" type="VARCHAR(255)"/>
+            <column name="meta_value" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-12">
+        <createTable tableName="hdd_terms">
+            <column autoIncrement="true" name="term_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="slug" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="term_group" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-13">
+        <createTable tableName="hdd_usermeta">
+            <column autoIncrement="true" name="umeta_id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meta_key" type="VARCHAR(255)"/>
+            <column name="meta_value" type="LONGTEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-14">
+        <createTable tableName="hdd_users">
+            <column autoIncrement="true" name="ID" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="user_login" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="user_pass" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="user_nicename" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="user_email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="user_url" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0000-00-00 00:00:00" name="user_registered" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="user_activation_key" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="user_status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="display_name" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-15">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="hdd_cfs_sessions"/>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-16">
+        <addPrimaryKey columnNames="object_id, term_taxonomy_id" constraintName="PRIMARY" tableName="hdd_term_relationships"/>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-17">
+        <addUniqueConstraint columnNames="option_name" constraintName="option_name" tableName="hdd_options"/>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-18">
+        <addUniqueConstraint columnNames="term_id, taxonomy" constraintName="term_id_taxonomy" tableName="hdd_term_taxonomy"/>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-19">
+        <createIndex indexName="comment_approved_date_gmt" tableName="hdd_comments">
+            <column name="comment_approved"/>
+            <column name="comment_date_gmt"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-20">
+        <createIndex indexName="comment_author_email" tableName="hdd_comments">
+            <column name="comment_author_email"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-21">
+        <createIndex indexName="comment_date_gmt" tableName="hdd_comments">
+            <column name="comment_date_gmt"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-22">
+        <createIndex indexName="comment_id" tableName="hdd_commentmeta">
+            <column name="comment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-23">
+        <createIndex indexName="comment_parent" tableName="hdd_comments">
+            <column name="comment_parent"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-24">
+        <createIndex indexName="comment_post_ID" tableName="hdd_comments">
+            <column name="comment_post_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-25">
+        <createIndex indexName="field_id_idx" tableName="hdd_cfs_values">
+            <column name="field_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-26">
+        <createIndex indexName="link_visible" tableName="hdd_links">
+            <column name="link_visible"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-27">
+        <createIndex indexName="meta_key" tableName="hdd_commentmeta">
+            <column name="meta_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-28">
+        <createIndex indexName="meta_key" tableName="hdd_postmeta">
+            <column name="meta_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-29">
+        <createIndex indexName="meta_key" tableName="hdd_termmeta">
+            <column name="meta_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-30">
+        <createIndex indexName="meta_key" tableName="hdd_usermeta">
+            <column name="meta_key"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-31">
+        <createIndex indexName="name" tableName="hdd_terms">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-32">
+        <createIndex indexName="post_author" tableName="hdd_posts">
+            <column name="post_author"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-33">
+        <createIndex indexName="post_id" tableName="hdd_postmeta">
+            <column name="post_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-34">
+        <createIndex indexName="post_id_idx" tableName="hdd_cfs_values">
+            <column name="post_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-35">
+        <createIndex indexName="post_name" tableName="hdd_posts">
+            <column name="post_name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-36">
+        <createIndex indexName="post_parent" tableName="hdd_posts">
+            <column name="post_parent"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-37">
+        <createIndex indexName="slug" tableName="hdd_terms">
+            <column name="slug"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-38">
+        <createIndex indexName="taxonomy" tableName="hdd_term_taxonomy">
+            <column name="taxonomy"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-39">
+        <createIndex indexName="term_id" tableName="hdd_termmeta">
+            <column name="term_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-40">
+        <createIndex indexName="term_taxonomy_id" tableName="hdd_term_relationships">
+            <column name="term_taxonomy_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-41">
+        <createIndex indexName="type_status_date" tableName="hdd_posts">
+            <column name="post_type"/>
+            <column name="post_status"/>
+            <column name="post_date"/>
+            <column name="ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-42">
+        <createIndex indexName="user_email" tableName="hdd_users">
+            <column name="user_email"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-43">
+        <createIndex indexName="user_id" tableName="hdd_usermeta">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-44">
+        <createIndex indexName="user_login_key" tableName="hdd_users">
+            <column name="user_login"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alaster (generated)" id="1489398328931-45">
+        <createIndex indexName="user_nicename" tableName="hdd_users">
+            <column name="user_nicename"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
