@@ -9,7 +9,7 @@ case "$1" in
         ;;
     "--wptest-import")
         # prevent multiple wp-test download
-        WPTEST=$( wp option get wptest --path=$WPPATH \)
+        WPTEST=$( wp option get wptest --path=$WPPATH )
         echo "**** dbg_10 get from wp : WPTEST=$WPTEST"
         if [[  -z $WPTEST ]]; then
             echo "**** dbg_20 if wp send wptest null"
