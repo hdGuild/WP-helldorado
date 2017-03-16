@@ -58,7 +58,6 @@ if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT == "--wptest-import" ]];then
     echo "<--     - rm wptest.xml                                   "
 fi    
 echo "<------------------------------------------------------   "
-echo "<------------------------------------------------------   "
 
 # move to wp directory 
 cd $WPPATH
@@ -66,6 +65,9 @@ cd $WPPATH
 # wp core check-update --path=/var/www/html/ --minor --skip-themes=all
 
 # load database update
+
+echo "**** dbg_55 using liquibase to update the database"
+$(liquibase 
 
 # change 'hellodorado' to 'helldorado' on all tables before updating options
 wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
@@ -80,6 +82,7 @@ wp option update admin_email 'contact.laguilde@helldorado'
 #wp option update stylesheet 'helldorado'
 
 
+
 # wp test installed only if asked for  
 if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT == '--wptest-import' ]];then
     ## install and activate wordpress-importer
@@ -90,11 +93,13 @@ if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT == '--wptest-import' ]];then
 
     # import the file, then delete it
     wp import wptest.xml --authors=create >> wptest.log 
+
     # echo 'cleanning wptest.xlm'
     rm wptest.xml
 
     # add or update the option wptest='yes'
     if [[ -z $WPTEST ]]; then
+        wp option delete wptest
         wp option add wptest yes
         echo "**** dbg_60 wp option wptest added to yes"
     else
