@@ -9,7 +9,7 @@ case "$1" in
         ;;
     "--wptest-import")
         # prevent multiple wp-test download
-        WPTEST=$(wp option get wptest --path=$WPPATH)
+        WPTEST=$( wp option get wptest --path=$WPPATH \)
         echo "**** dbg_10 get from wp : WPTEST=$WPTEST"
         if [[  -z $WPTEST ]]; then
             echo "**** dbg_20 if wp send wptest null"
@@ -28,13 +28,13 @@ case "$1" in
         WPTEST_IMPORT=
         ;;
     *)
-        echo "Invalid flag provided. Allowed flags:\n --help\n --wptest-import"
+        echo "Invalid flag provided. Allowed flags: --help --wptest-import"
         exit
         ;;
 esac 
 
 # help menu
-if [[ ! -z $HELP ]] && [[ $HELP == "--help" ]];then
+if [[ ! -z $HELP ]] && [[ $HELP=="--help" ]];then
     echo "script deploy : help deploying wp-helldorado wordpress through wp-cli."
     echo "--help : shows this help."
     echo "--wptest-import: download testing data from http://wptest.io/ after installing and activating wordpress-importer plugin"
@@ -49,7 +49,7 @@ echo "<-- script  deploy  :                                     "
 echo "<--   + update wp options to re7 values :                 "
 echo "<--     - url - home - blogname - desc - email            "
 echo "<--     - stylesheet - template                           "
-if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT == "--wptest-import" ]];then
+if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT=="--wptest-import" ]];then
     echo "<--   + Import Tests DATAS from wptest :                  "
     echo "<--     - wget wptest.xml from GitHub                     "
     echo "<--     - install wordpress-importer (wp-cli)             "
@@ -67,7 +67,6 @@ cd $WPPATH
 # load database update
 
 echo "**** dbg_55 using liquibase to update the database"
-$(liquibase 
 
 # change 'hellodorado' to 'helldorado' on all tables before updating options
 wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
@@ -84,7 +83,7 @@ wp option update admin_email 'contact.laguilde@helldorado'
 
 
 # wp test installed only if asked for  
-if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT == '--wptest-import' ]];then
+if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT=='--wptest-import' ]];then
     ## install and activate wordpress-importer
     wp plugin install wordpress-importer --activate 
 
@@ -107,3 +106,4 @@ if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT == '--wptest-import' ]];then
         echo "**** dbg_70 wp option wptest updated to yes"
     fi
 fi
+
