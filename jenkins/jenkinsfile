@@ -1,0 +1,27 @@
+#!/usr/bin/env groovy
+
+node('master'){
+    checkout scm
+    stage('Build'){
+        echo 'Building...'
+    }
+    stage('Test'){
+        echo 'Testing...'
+    }
+    stage('Deploy'){
+        echo 'Deploying...'
+        sshagent (credentials: ['jenkins']) {
+                sh 'echo copying wp-content/themes/HellDorado theme...'
+                sh 'rsync -avz -e "ssh" wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado' 
+                sh 'echo copying scripts...' 
+                sh 'rsync -avz -e "ssh" scripts jenkins@re7.helldorado.fr:scripts' 
+                sh 'echo making scripts/* runnable...'
+                sh 'chmod -R ug+x /var/www/html/scripts'
+                sh 'echo copying database liquibase scripts...'
+                sh 'rsync -avz -e "ssh" Database jenkins@re7.helldorado.fr:Database' 
+                sh 'eho running scripts/deploy...'
+                sh './var/www/html/scripts/deploy --wptest-import'
+                  }
+
+    }
+}
