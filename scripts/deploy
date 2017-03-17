@@ -67,7 +67,7 @@ cd $WPPATH
 # load database update
 
 echo "**** dbg_55 using liquibase to update the database"
-liquibase --defaultsFile=../Database/liquibase.properties --changeLogFile=../Database/hddb.changelog-master.xml update
+liquibase --defaultsFile=Database/liquibase.properties --changeLogFile=../Database/hddb.changelog-master.xml update
 
 # change 'hellodorado' to 'helldorado' on all tables before updating options
 wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
