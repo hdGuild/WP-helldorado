@@ -78,7 +78,7 @@ wp option update home 'https://re7.helldorado.fr'
 wp option update blogname 'Hell Dorado'
 wp option update blogdescription "Les lois éternelles de l'enfer"
 wp option update admin_email 'contact.laguilde@helldorado'
-wp option update template 'HellDorado'
+#wp option update template 'HellDorado'
 #wp option update stylesheet 'helldorado'
 
 
