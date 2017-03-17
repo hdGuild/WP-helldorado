@@ -19,9 +19,8 @@ node('master'){
                 sh 'chmod -R ug+x /var/www/html/scripts'
                 sh 'echo copying database liquibase scripts...'
                 sh 'rsync -avz -e "ssh" Database jenkins@re7.helldorado.fr:Database' 
-                sh 'eho running scripts/deploy...'
+                sh 'echo running scripts/deploy...'
                 sh './var/www/html/scripts/deploy --wptest-import'
-                  }
-
+        }
     }
 }
