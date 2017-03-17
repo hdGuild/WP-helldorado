@@ -67,6 +67,7 @@ cd $WPPATH
 # load database update
 
 echo "**** dbg_55 using liquibase to update the database"
+liquibase --defaultsFile=../Database/liquibase.properties --changeLogFile=../Database/hddb.changelog-master.xml update
 
 # change 'hellodorado' to 'helldorado' on all tables before updating options
 wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
@@ -77,7 +78,7 @@ wp option update home 'https://re7.helldorado.fr'
 wp option update blogname 'Hell Dorado'
 wp option update blogdescription "Les lois éternelles de l'enfer"
 wp option update admin_email 'contact.laguilde@helldorado'
-#wp option update template 'helldorado'
+wp option update template 'HellDorado'
 #wp option update stylesheet 'helldorado'
 
 
