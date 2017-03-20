@@ -11,6 +11,7 @@ node('master'){
     stage('Deploy'){
         echo 'Deploying...'
         sshagent (credentials: ['jenkins']) {
+                sh 'eval $(ssh-agent -s)'
                 sh 'echo copying wp-content/themes/HellDorado theme...'
                 sh 'rsync -avz -e "ssh" wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado' 
                 sh 'echo copying scripts...' 
@@ -21,6 +22,7 @@ node('master'){
                 sh 'rsync -avz -e "ssh" Database jenkins@re7.helldorado.fr:Database' 
                 sh 'echo running scripts/deploy...'
                 sh './var/www/html/scripts/deploy --wptest-import'
+                sh 'ssh-agent -k'
         }
     }
 }
