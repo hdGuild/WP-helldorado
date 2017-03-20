@@ -10,7 +10,7 @@ node('master'){
     }
     stage('Deploy'){
         echo 'Deploying...'
-        sshagent (credentials: ['jenkins']) {
+        sshagent (credentials: ['c188723b-029f-43c0-947f-f5cc1866b29c']) {
                 sh 'echo copying wp-content/themes/HellDorado theme...'
                 sh 'rsync -avz -e "ssh" wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado' 
                 sh 'echo copying scripts...' 
@@ -19,9 +19,8 @@ node('master'){
                 sh 'chmod -R ug+x /var/www/html/scripts'
                 sh 'echo copying database liquibase scripts...'
                 sh 'rsync -avz -e "ssh" Database jenkins@re7.helldorado.fr:Database' 
-                sh 'eho running scripts/deploy...'
+                sh 'echo running scripts/deploy...'
                 sh './var/www/html/scripts/deploy --wptest-import'
-                  }
-
+        }
     }
 }
