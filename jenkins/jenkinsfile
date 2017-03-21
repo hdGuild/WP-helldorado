@@ -10,7 +10,7 @@ node('master'){
     }
     stage('Deploy'){
         echo 'Deploying...'
-        sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']
+        sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred'])
                 sh 'echo copying wp-content/themes/HellDorado theme...'
                 sh 'rsync -avz -e "ssh" wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado' 
                 sh 'echo copying scripts...' 
