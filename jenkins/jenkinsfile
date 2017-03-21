@@ -21,6 +21,6 @@ node('master'){
                 sh 'rsync -avz -e "ssh" Database jenkins@re7.helldorado.fr:Database' 
                 sh 'echo running scripts/deploy...'
                 sh './var/www/html/scripts/deploy --wptest-import'
-        }
     }
 }
+
