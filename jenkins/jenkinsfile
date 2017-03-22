@@ -21,7 +21,7 @@ node('master'){
                     echo 'making scripts runnable'
                     chmod -R ug+x /var/www/html/scripts
                     echo 'running script Deploy...'
-                    bash -s < "/var/www/html/scripts/deploy --wprtest-import"
+                    bash -s -- < /var/www/html/scripts/deploy --wprtest-import
                     ENDSSH'''
        }
     }
