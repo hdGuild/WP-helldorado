@@ -12,7 +12,7 @@ node('master'){
         echo 'Deploying...'
         sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']) {
                 echo 'copying wp-content/themes/HellDorado theme'
-                sh "rsync -avr --delete wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado -e 'ssh -p 443'"
+                scp -p 443  wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado
        }
     }
 }
