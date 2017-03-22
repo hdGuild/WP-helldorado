@@ -17,7 +17,7 @@ node('master'){
                 sh "rm -r ./mnt/HellDorado"
                 sh "cp ./wp-content/themes/HellDorado ./mnt/HellDorado"
 
-                sh "echo 'scp copy HellDorado themes to themes\HellDorado\HellDorado\ for tests'"
+                sh "echo 'scp copy HellDorado themes to themes/HellDorado/HellDorado/ for tests'"
                 sh "scp -r -P 443  wp-content/themes/HellDorado jenkins@re7.helldorado.fr:/var/www/html/wp-content/themes/HellDorado/"
        }
     }
