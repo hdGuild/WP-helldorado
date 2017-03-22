@@ -12,10 +12,12 @@ node('master'){
         echo 'Deploying...'
         sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']) {
                 sh "echo 'copying wp-content/themes/HellDorado theme mounting repertory with sshfs !'"
-                sh "mkdir ./mnt/HellDorado"
+                sh "mkdir -p ./mnt/HellDorado"
                 sh "sshfs jenkins@re7.helldorado.fr:/var/www/html/wp-content/themes/HellDorado ./mnt/HellDorado"
                 sh "rm -r ./mnt/HellDorado"
                 sh "cp ./wp-content/themes/HellDorado ./mnt/HellDorado"
+
+                sh "umount ./mnt/HellDorado"
 
                 sh "echo 'scp copy HellDorado themes to themes/HellDorado/HellDorado/ for tests'"
                 sh "scp -r -P 443  wp-content/themes/HellDorado jenkins@re7.helldorado.fr:/var/www/html/wp-content/themes/HellDorado/"
