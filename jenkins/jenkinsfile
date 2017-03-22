@@ -11,7 +11,7 @@ node('master'){
     stage('Deploy'){
         echo 'Deploying...'
         sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']) {
-                sh "echo copying wp-content/themes/HellDorado theme"
+                echo 'copying wp-content/themes/HellDorado theme'
        }
     }
 }
