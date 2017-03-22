@@ -11,8 +11,8 @@ node('master'){
     stage('Deploy'){
         echo 'Deploying...'
         sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']) {
-                echo 'copying wp-content/themes/HellDorado theme'
-                scp -p 443  wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado
+                sh "echo 'copying wp-content/themes/HellDorado theme'"
+                sh "scp -r -p 443  wp-content/themes/HellDorado/ jenkins@re7.helldorado.fr:wp-content/themes/HellDorado/"
        }
     }
 }
