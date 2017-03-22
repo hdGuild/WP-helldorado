@@ -19,7 +19,7 @@ node('master'){
                 sh "scp -r -P 443 Database jenkins@re7.helldorado.fr:/var/www/html/"
                 sh '''ssh -p 443 jenkins@re7.helldorado.fr << 'ENDSSH'
                     echo 'making scripts runnable'
-                    chmod -R ug+x jenkins@re7.helldorado.fr:/var/www/html/scripts
+                    chmod -R ug+x /var/www/html/scripts
                     echo 'running script Deploy...'
                     ./var/www/html/scripts/deploy --wprtest-import
                     ENDSSH'''
