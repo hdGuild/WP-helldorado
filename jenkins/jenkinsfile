@@ -18,10 +18,17 @@ node('master'){
                   scp -r -P 443 scripts jenkins@re7.helldorado.fr:/var/www/html/
                   echo 'copying liquibase scripts'
                   scp -r -P 443 Database jenkins@re7.helldorado.fr:/var/www/html/
+ENDSSH'''
+        }
+    }
+     stage('update'){
+        echo 'scripting...'
+        sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']) {
+            sh '''ssh -p 443 jenkins@re7.helldorado.fr << 'ENDSSH'
                   echo 'making scripts runnable'
                   chmod -R ug+x /var/www/html/scripts
                   echo 'running script Deploy...'
-                  bash -s -- < /var/www/html/scripts/deploy --wprtest-import
+                  bash -s -- < /var/www/html/scripts/deploy --wptest-import
 ENDSSH'''
        }
     }
