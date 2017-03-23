@@ -7,6 +7,7 @@ node('master'){
     }
     stage('Test'){
         echo 'Testing...'
+        sh 'phpunit --version'
     }
     stage('Deploy'){
         echo 'Deploying...'
