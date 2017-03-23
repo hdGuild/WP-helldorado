@@ -35,7 +35,7 @@ echo "<-- script  deploy  :                                     "
 echo "<--   + update wp options to re7 values :                 "
 echo "<--     - url - home - blogname - desc - email            "
 echo "<--     - stylesheet - template                           "
-if [ ! -z $WPTEST_IMPORT] && [ $WPTEST_IMPORT == "--wptest-import" ];then
+if [ ! -z $WPTEST_IMPORT ] && [ $WPTEST_IMPORT == "--wptest-import" ];then
     echo "<--   + Import Tests DATAS from wptest :                  "
     echo "<--     - wget wptest.xml from GitHub                     "
     echo "<--     - install wordpress-importer (wp-cli)             "
