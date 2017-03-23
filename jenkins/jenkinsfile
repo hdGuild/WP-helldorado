@@ -10,17 +10,20 @@ node('master'){
     }
     stage('Deploy'){
         echo 'Deploying...'
-        sshagent (credentials: ['c188723b-029f-43c0-947f-f5cc1866b29c']) {
-                sh 'echo copying wp-content/themes/HellDorado theme...'
-                sh 'rsync -avz -e "ssh" wp-content/themes/HellDorado jenkins@re7.helldorado.fr:wp-content/themes/HellDorado' 
-                sh 'echo copying scripts...' 
-                sh 'rsync -avz -e "ssh" scripts jenkins@re7.helldorado.fr:scripts' 
-                sh 'echo making scripts/* runnable...'
-                sh 'chmod -R ug+x /var/www/html/scripts'
-                sh 'echo copying database liquibase scripts...'
-                sh 'rsync -avz -e "ssh" Database jenkins@re7.helldorado.fr:Database' 
-                sh 'echo running scripts/deploy...'
-                sh './var/www/html/scripts/deploy --wptest-import'
-        }
+        sshagent (credentials: ['ssh-jenkins-to-ubuntu-cred']) {
+            sh '''ssh -p 443 jenkins@re7.helldorado.fr << 'ENDSSH'
+                  echo 'copying wp-content/themes/HellDorado'
+                  scp -r -P 443  wp-content/themes/HellDorado jenkins@re7.helldorado.fr:/var/www/html/wp-content/themes/
+                  echo 'copying scripts'
+                  scp -r -P 443 scripts jenkins@re7.helldorado.fr:/var/www/html/
+                  echo 'copying liquibase scripts'
+                  scp -r -P 443 Database jenkins@re7.helldorado.fr:/var/www/html/
+                  echo 'making scripts runnable'
+                  chmod -R ug+x /var/www/html/scripts
+                  echo 'running script Deploy...'
+                  bash -s -- < /var/www/html/scripts/deploy --wptest-import
+ENDSSH'''
+       }
     }
 }
+
