@@ -70,16 +70,26 @@ echo "**** dbg_55 using liquibase to update the database"
 liquibase --defaultsFile=Database/liquibase.properties --changeLogFile=Database/hddb.changelog-master.xml update
 
 # change 'hellodorado' to 'helldorado' on all tables before updating options
-wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
+# wp search-replace --all-tables 'http://dev1.websiteserverhost.com/hellodorado' 'https://re7.helldorado.fr'
 
 # update wp options from database
+echo "update wp options for tests to follow the https://codex.wordpress.org/Theme_Development#Theme_Testing_Process"
+
 wp option update siteurl 'https://re7.helldorado.fr'
 wp option update home 'https://re7.helldorado.fr'
-wp option update blogname 'Hell Dorado'
+wp option update blogname 'Hell Doradoi - This site was long time ago at helldorado.fr supported by Asmodee compagny. Now, as Cipher Studio do not want to support it, I try hard or not, to maintain it as alive as possibvle... it is hard to do, as I am not a web developper, but I try. Hope this site will please you and will be usefull for most of you !'
 wp option update blogdescription "Les lois éternelles de l'enfer"
 wp option update admin_email 'contact.laguilde@helldorado'
 #wp option update template 'HellDorado'
 #wp option update stylesheet 'helldorado'
+wp option update posts_per_page '5'
+wp option update thread_comments '1'
+wp option update thread_comments_depth '3'
+wo option update page_comments '1'
+wp option update comments_per_page '5'
+#wp option update medium_large_size_w 0
+#wp option update medium_large_size_h 0
+wp option update permalink_structure '/%month%/%postname%/'
 
 
 
