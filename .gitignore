@@ -30,4 +30,7 @@ wp-content/plugins/*
 # Ignore everything in the "themes" directory, except the themes you specify 
 wp-content/themes/* 
 !wp-content/themes/hellodorado/ 
+!wp-content/themes/HellDorado/
 
+# do not ignore tests directory 
+!tests/*

@@ -19,6 +19,7 @@ This platform is using these tools :
     --> Tutorial can be found at https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit/
     --> version used for tests : PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 - wptest (http://wptest.io/) to have content for the developed wesite 
+    --> demo for wptest is at : http://wptest.io/demo/
 - use the wordpress theme testing procedure at https://codex.wordpress.org/Theme_Unit_Test
 - liquibase to update database structure : http://www.liquibase.org/quickstart.html
     --> see overview here : http://stefanborghys.blogspot.fr/2014/02/setting-up-database-using-liquibase-311.html#!/2014/02/setting-up-database-using-liquibase-311.html
