@@ -8,6 +8,7 @@ node('master'){
     stage('Test'){
         echo 'Testing...'
         sh 'phpunit --version'
+#add PHPUnit Theme  Testing here !
     }
     stage('Deploy'){
         echo 'Deploying...'
