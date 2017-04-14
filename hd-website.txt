@@ -52,4 +52,5 @@ wp core config --dbname=dev1web_helldorado dbuser=root --dbpass=password --dbhos
 2017/03/01 : add the use of wptest to fulfill the site (see http://wptest.io/)
 2017/03/14 : add use of liquibase for database update syructure
 2017/03/27 : add use of phpunit (version) and begin to integrate wp-theme testing : https://codex.wordpress.org/Theme_Unit_Test
+2017/04/14 : prepare to use SonarQube online to Continuous Code Quality : https://sonarqube.com/about
 
