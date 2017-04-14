@@ -77,7 +77,7 @@ echo "update wp options for tests to follow the https://codex.wordpress.org/Them
 
 wp option update siteurl 'https://re7.helldorado.fr'
 wp option update home 'https://re7.helldorado.fr'
-wp option update blogname 'Hell Doradoi - This site was long time ago at helldorado.fr supported by Asmodee compagny. Now, as Cipher Studio do not want to support it, I try hard or not, to maintain it as alive as possibvle... it is hard to do, as I am not a web developper, but I try. Hope this site will please you and will be usefull for most of you !'
+wp option update blogname 'Hell Dorado - This site was long time ago at helldorado.fr supported by Asmodee compagny. Now, as Cipher Studio do not want to support it, I try hard or not, to maintain it as alive as possibvle... it is hard to do, as I am not a web developper, but I try. Hope this site will please you and will be usefull for most of you !'
 wp option update blogdescription "Les lois éternelles de l'enfer"
 wp option update admin_email 'contact.laguilde@helldorado'
 #wp option update template 'HellDorado'
@@ -91,7 +91,9 @@ wp option update comments_per_page '5'
 #wp option update medium_large_size_h 0
 wp option update permalink_structure '/%month%/%postname%/'
 
-
+# wp prepare for the new theme 
+wp plugin install "Nav Menu Roles"
+wp plugin install "Theme My Login"
 
 # wp test installed only if asked for  
 if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT=='--wptest-import' ]];then
@@ -115,6 +117,23 @@ if [[ ! -z $WPTEST_IMPORT ]] && [[ $WPTEST_IMPORT=='--wptest-import' ]];then
     else
         wp option update yes
         echo "**** dbg_70 wp option wptest updated to yes"
+    fi
+fi
+
+# phpunit theme testing
+THEMETEST=$( wp option get wpthemetest --path=$WPPATH )
+if [[ -z $THEMETEST ]] || [[ $THEMETEST!='yes' ]];then
+    # upload the include for phpunit theme tests
+    cd tests/
+    svn co http://develop.svn.wordpress.org/trunk/tests/phpunit/includes/
+
+    if [[ -z $THEMETEST ]]; then
+        wp option delete wpthemetest --path=$WPPATH 
+        wp option add wpthemetest yes --path=$WPPATH
+        echo "**** dbg_80 wp option wpthemetest added to yes"
+    else
+        wp option update wpthemetest yes --path=$WPPATH 
+        echo "**** dbg_90 wp option wpthemetest updated to yes"
     fi
 fi
 
