@@ -3,6 +3,8 @@ sudo: required
 
 addons:
     sonarqube:
+        branches:
+            -tests
         organization:
         token:
             secure: "kNspG7y3cymGBewUqKRj"
